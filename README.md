@@ -1,25 +1,12 @@
-# New Project
+## Dev News, client side
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
+Additional work related to a SDA8 Project in Backend Module.
 
-## Available Scripts
+##### Project synopsis : 
+*In this project you'll be building the backend for a developer news site where users can create articles, comment them and post their reactions (likes, dislikes). The main focus point of this project is developing your backend skills so the main way to interact with our application will be using APIs (No graphical user interface)*
 
-### npm start
+See more details here : https://git.2020.school/jeremy_lavigne/dev-news
 
-Runs the app in the development mode.
-Open http://localhost:8080 to view it in the browser.
+### What is in this Repository ?
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
-
-### npm run build
-
-Builds a static copy of your site to the `build/` folder.
-Your app is ready to be deployed!
-
-**For the best production performance:** Add a build bundler plugin like "@snowpack/plugin-webpack" to your `snowpack.config.js` config file.
-
-### npm test
-
-Launches the application test runner.
-Run with the `--watch` flag (`npm test -- --watch`) to run in interactive watch mode.
+The front-end part of this project.

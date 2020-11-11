@@ -1,0 +1,73 @@
+.article {
+    border: 2px solid black;
+    box-shadow: 4px 4px grey;
+    margin: 5px;
+    padding-left: 6px;
+    padding-top: 5px;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.topic-header {
+    display: flex;
+}
+.topic-header li {
+    list-style: none;
+    color: white;
+    padding: 5px;
+    background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+    box-shadow: 0px 1px 0px 0px #092b3a;
+    border: 1px double black;
+    border-radius: 5px;
+}
+
+.article h3 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-decoration: underline;
+}
+
+.delete-button {
+    position: absolute;
+    top : 6px;
+    right : 6px;
+    color: white;
+    padding: 1px;
+    background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+    box-shadow: 0px 1px 0px 0px #092b3a;
+    border: 1px double black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.article-body {
+    border-bottom: 1px solid black;
+    padding-left: 10px;
+}
+
+.author {
+    font-style: italic;
+    width: 95%;
+    text-align: right;
+}
+
+.add-comment {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.add-comment input {
+    margin: 3px;
+}
+.add-comment button {
+    color: white;
+    padding: 4px;
+    background: green;
+    box-shadow: 0px 1px 0px 0px #092b3a;
+    border: 1px double black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.body-comment-input {
+    width: 300px;
+    height: 40px
+}

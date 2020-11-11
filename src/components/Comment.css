@@ -1,0 +1,12 @@
+.comment {
+    background-color: darkgrey;
+    color:white;
+    border-radius: 15px;
+    padding-left: 8px;
+    position: relative;
+    width: 90%;
+}
+
+.comment-content {
+
+}

@@ -2,11 +2,17 @@ import React, { useState } from 'react';
 import './Topics.css'
 
 import topicService from '../service/topics'
+import articleService from '../service/articles'
 
-function Topics() {
+function Topics({topics, setTopics, setArticles}) {
 
-    const [ topics, setTopics ] = useState([]);
     const [ newName, setNewName ] = useState('');
+
+    const getAllArticles = () => {
+        articleService.getAll()
+        .then((data) => {
+            setArticles(data)})
+    }
 
     const createOne = () => {
         const newTopic = {
@@ -19,6 +25,13 @@ function Topics() {
             topicService.getAll()
             .then((data) => {
                 setTopics(data)})
+        })
+    }
+
+    const filterByTopicId = (topicId) => {
+        articleService.getAllByTopicId(topicId)
+        .then((data) => {
+            setArticles(data)
         })
     }
 
@@ -37,9 +50,12 @@ function Topics() {
             </div>
             <div className="filter-with-topics">
                 <h4>Filter with Topic</h4>
-                { topics.length === 0 ? "No Topics" :
+                <button onClick={() => getAllArticles()}>All</button>
+                { topics.length === 0 ? "No Topics yet" :
                     topics.map((top) => 
-                        <li key={top.id}>{top.name}</li>) 
+                        <button key={top.id}
+                        onClick={() => filterByTopicId(top.id)}
+                        >{top.name}</button>) 
                     }
                 
             </div>

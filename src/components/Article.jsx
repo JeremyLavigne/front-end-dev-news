@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import commentService from '../service/comments'
-import Comment from './Comment'
 import './Article.css'
 
-function Article({ article, deleteArticle }) {
+import Comment from './Comment'
+
+import commentService from '../service/comments'
+import articleService from '../service/articles'
+
+
+function Article({ article, deleteArticle, setArticles, topics }) {
 
     const [comments, setComments] = useState([]);
     // Variables for adding comments
@@ -42,8 +46,26 @@ function Article({ article, deleteArticle }) {
         });
     }
 
-    const handleAddTopic = () => {
-        console.log("send a put request with article linked to topic")
+    const handleAddTopic = (e) => {
+        e.preventDefault()
+        const newTopic = document.getElementById("select-topic").value;
+        const newTopicId = newTopic.substr(0,1);
+        const newTopicName = newTopic. substr(1);
+        const updatedArticle = {
+            id: article.id,
+            title: article.title,
+            body: article.body,
+            authorName: article.authorName,
+            topics: article.topics.concat({id: newTopicId, name: newTopicName})
+        }
+        console.log(updatedArticle)
+        articleService.update(updatedArticle)
+        .then((data) => {
+            console.log(data)
+            articleService.getAll()
+                .then((data) => {
+                    setArticles(data)})
+        });
     }
 
     return (
@@ -55,14 +77,16 @@ function Article({ article, deleteArticle }) {
                 <div className="topic-header">
                     {article.topics.map((top) => <li key={top.id}>{top.name}</li>)}
                     <div>
-                        <label htmlFor="cars">Add Topic</label>
-                        <select name="cars" id="cars">
-                            <option value="volvo">Add</option>
-                            <option value="saab">a Map</option>
-                            <option value="opel">With</option>
-                            <option value="audi">Topics</option>
+                        <form>
+                        <select id="select-topic">
+                            <option vlaue={null}>Select</option>
+                        { topics
+                            .map((top) => 
+                            <option key={top.id} value={`${top.id}${top.name}`}>{top.name}</option>) 
+                        }
                         </select>
                         <button onClick={handleAddTopic}>Add</button>
+                        </form>
                     </div>
                 </div>
 

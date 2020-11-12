@@ -1,0 +1,13 @@
+.create-article {
+    width: 45%;
+    margin-left: 5px;
+}
+
+.create-article input {
+    margin: 5px;
+}
+
+.body-input {
+    height: 40px;
+    width: 200px;
+}

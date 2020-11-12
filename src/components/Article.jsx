@@ -42,8 +42,11 @@ function Article({ article, deleteArticle }) {
         });
     }
 
+    const handleAddTopic = () => {
+        console.log("send a put request with article linked to topic")
+    }
+
     return (
-        <div>
             <div className="article">
                 <button className="delete-button" onClick={() => deleteArticle(article.id)}>
                     Del
@@ -51,6 +54,16 @@ function Article({ article, deleteArticle }) {
 
                 <div className="topic-header">
                     {article.topics.map((top) => <li key={top.id}>{top.name}</li>)}
+                    <div>
+                        <label htmlFor="cars">Add Topic</label>
+                        <select name="cars" id="cars">
+                            <option value="volvo">Add</option>
+                            <option value="saab">a Map</option>
+                            <option value="opel">With</option>
+                            <option value="audi">Topics</option>
+                        </select>
+                        <button onClick={handleAddTopic}>Add</button>
+                    </div>
                 </div>
 
                 <h3>{article.title}</h3>
@@ -81,7 +94,6 @@ function Article({ article, deleteArticle }) {
                     <button onClick={createComment}>Create</button>
                 </div>
             </div>
-        </div>
     );
 }
 

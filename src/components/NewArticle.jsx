@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import './NewArticle.css';
+
+// Components
+import Button from './atoms/Button'
+
+// Services
 import articleService from '../service/articles'
+
 
 function NewArticle({setArticles}) { 
 
@@ -46,7 +52,7 @@ function NewArticle({setArticles}) {
                 value={newAuthor}
                 onChange={(e) => { setNewAuthor(e.target.value) }}
             />
-            <button onClick={createOne}>Create</button>
+            <Button content="Create" type="create" onClick={createOne} /> 
         </div >
     );
 }

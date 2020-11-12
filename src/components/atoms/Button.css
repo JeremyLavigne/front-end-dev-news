@@ -1,0 +1,72 @@
+.button {
+    outline: none;
+    color: white;
+    margin: 5px;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.button:active {
+	position:relative;
+	top:1px;
+}
+
+.topic-filter {
+    box-shadow: 0px 1px 0px 0px #f0f7fa;
+	background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+    border-radius: 10px;
+}
+.topic-filter:hover {
+	background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+	background-color:#019ad2;
+}
+
+.del {
+    background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+    box-shadow: 0px 1px 0px 0px #092b3a;
+    border: 1px double black;
+    position: absolute;
+    margin: 0px;
+    top : 0px;
+    right : 0px;
+}
+.del:hover {
+	background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+    background-color:#bc3315;
+}
+.del:active { /* To avoid issues when clicking on */
+    position: absolute;
+    top : 0px;
+    right : 0px;
+}
+
+.add {
+    display: inline-block;
+    background-color: black;
+    width: 25px;
+    height: 25px;
+    font-size: 1.3em;
+}
+.add:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.create {
+	background:linear-gradient(to bottom, #18702e 5%, #078818 100%);
+	background-color:#33bdef;
+}
+.create:hover {
+	background:linear-gradient(to bottom, #078818 5%, #18702e 100%);
+	background-color:#019ad2;
+}
+
+
+@media (min-width: 700px) {
+
+}
+
+@media (min-width: 1300px) {
+
+}

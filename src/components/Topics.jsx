@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import './Topics.css'
 
+// Components
+import Button from './atoms/Button'
+
+// Services
 import topicService from '../service/topics'
 import articleService from '../service/articles'
+
 
 function Topics({topics, setTopics, setArticles}) {
 
@@ -45,19 +50,23 @@ function Topics({topics, setTopics, setArticles}) {
                         value={newName}
                         onChange={(e) => {setNewName(e.target.value)}} 
                     />
-                    <button onClick={createOne}>Create</button>
+                    <Button content="Create" type="create" onClick={createOne} /> 
                 </p>
             </div>
             <div className="filter-with-topics">
                 <h4>Filter with Topic</h4>
-                <button onClick={() => getAllArticles()}>All</button>
+                <Button content="All" type="topic-filter" onClick={getAllArticles} /> 
+
                 { topics.length === 0 ? "No Topics yet" :
-                    topics.map((top) => 
-                        <button key={top.id}
-                        onClick={() => filterByTopicId(top.id)}
-                        >{top.name}</button>) 
-                    }
-                
+                    topics.map((top) =>
+                        <Button 
+                            key={top.id} 
+                            content={top.name} 
+                            type="topic-filter" 
+                            onClick={() => filterByTopicId(top.id)}
+                        /> 
+                    )
+                }
             </div>
         </div>
     );

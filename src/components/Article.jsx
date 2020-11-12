@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import './Article.css'
 
+// Components
+import Button from './atoms/Button'
 import Comment from './Comment'
 
+// Services
 import commentService from '../service/comments'
 import articleService from '../service/articles'
 
@@ -48,7 +51,7 @@ function Article({ article, deleteArticle, setArticles, topics }) {
 
     const handleAddTopic = (e) => {
         e.preventDefault()
-        const newTopic = document.getElementById("select-topic").value;
+        const newTopic = document.getElementById(`select-topic-article-${article.id}`).value;
         const newTopicId = newTopic.substr(0,1);
         const newTopicName = newTopic. substr(1);
         const updatedArticle = {
@@ -61,7 +64,6 @@ function Article({ article, deleteArticle, setArticles, topics }) {
         console.log(updatedArticle)
         articleService.update(updatedArticle)
         .then((data) => {
-            console.log(data)
             articleService.getAll()
                 .then((data) => {
                     setArticles(data)})
@@ -70,22 +72,20 @@ function Article({ article, deleteArticle, setArticles, topics }) {
 
     return (
             <div className="article">
-                <button className="delete-button" onClick={() => deleteArticle(article.id)}>
-                    Del
-                </button>
+                <Button content="x" type="del" onClick={() => deleteArticle(article.id)} />
 
                 <div className="topic-header">
                     {article.topics.map((top) => <li key={top.id}>{top.name}</li>)}
                     <div>
                         <form>
-                        <select id="select-topic">
-                            <option vlaue={null}>Select</option>
+                        <select id={`select-topic-article-${article.id}`}>
+                            <option vlaue={null}>Add topic</option>
                         { topics
                             .map((top) => 
                             <option key={top.id} value={`${top.id}${top.name}`}>{top.name}</option>) 
                         }
                         </select>
-                        <button onClick={handleAddTopic}>Add</button>
+                        <Button content="Add" type="create" onClick={handleAddTopic} /> 
                         </form>
                     </div>
                 </div>
@@ -115,7 +115,7 @@ function Article({ article, deleteArticle, setArticles, topics }) {
                         value={newAuthor}
                         onChange={(e) => { setNewAuthor(e.target.value) }}
                     />
-                    <button onClick={createComment}>Create</button>
+                    <Button content="Create" type="create" onClick={createComment} /> 
                 </div>
             </div>
     );

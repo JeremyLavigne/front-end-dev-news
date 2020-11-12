@@ -1,17 +1,20 @@
 .article {
     border: 2px solid black;
-    box-shadow: 4px 4px grey;
+    box-shadow: 4px 4px black;
     margin: 5px;
     padding-left: 6px;
     padding-top: 5px;
     position: relative;
     margin-bottom: 15px;
     background-color: white;
+    border-radius: 10px;
     width: 90%;
 }
 
 .topic-header {
     display: flex;
+    flex-wrap: wrap;
+    max-width: 90%; /* let some space for the delete button */
 }
 .topic-header li {
     list-style: none;
@@ -29,18 +32,6 @@
     text-decoration: underline;
 }
 
-.delete-button {
-    position: absolute;
-    top : 6px;
-    right : 6px;
-    color: white;
-    padding: 1px;
-    background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
-    box-shadow: 0px 1px 0px 0px #092b3a;
-    border: 1px double black;
-    border-radius: 5px;
-    cursor: pointer;
-}
 .article-body {
     border-bottom: 1px solid black;
     padding-left: 10px;

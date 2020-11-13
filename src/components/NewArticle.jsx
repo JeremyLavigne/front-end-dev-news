@@ -4,8 +4,8 @@ import './NewArticle.css';
 // Components
 import Button from './atoms/Button'
 
-// Services
-import articleService from '../service/articles'
+// Controllers
+import articleController from '../controller/articles'
 
 
 function NewArticle({setArticles}) { 
@@ -14,22 +14,16 @@ function NewArticle({setArticles}) {
     const [ newBody, setNewBody ] = useState('');
     const [ newAuthor, setNewAuthor ] = useState('');
 
-    const createOne = () => {
+    const createArticle = () => {
         const newArticle = {
             title: newTitle,
             body: newBody,
             authorName: newAuthor
         }
-        articleService.createOne(newArticle)
-        .then((data) => {
-            console.log(data, 'created')
-            setNewAuthor('')
-            setNewBody('')
-            setNewTitle('')
-            articleService.getAll()
-            .then((data) => {
-                setArticles(data)})
-        })
+        articleController.createArticle(newArticle, setArticles)
+        setNewAuthor('')
+        setNewBody('')
+        setNewTitle('')
     }
 
     return (
@@ -52,7 +46,10 @@ function NewArticle({setArticles}) {
                 value={newAuthor}
                 onChange={(e) => { setNewAuthor(e.target.value) }}
             />
-            <Button content="Create" type="create" onClick={createOne} /> 
+            <Button 
+                content="Create" type="create" 
+                onClick={createArticle} 
+            /> 
         </div >
     );
 }

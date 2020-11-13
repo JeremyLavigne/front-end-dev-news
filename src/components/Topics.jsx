@@ -4,41 +4,21 @@ import './Topics.css'
 // Components
 import Button from './atoms/Button'
 
-// Services
-import topicService from '../service/topics'
-import articleService from '../service/articles'
+// Controllers
+import articleController from '../controller/articles'
+import topicController from '../controller/topics'
 
 
-function Topics({topics, setTopics, setArticles}) {
+const Topics = ({topics, setTopics, setArticles}) => {
 
     const [ newName, setNewName ] = useState('');
 
-    const getAllArticles = () => {
-        articleService.getAll()
-        .then((data) => {
-            setArticles(data)})
+    const createTopic = () => {
+        const newTopic = { name: newName }
+        topicController.createTopic(newTopic, setTopics)
+        setNewName('')
     }
 
-    const createOne = () => {
-        const newTopic = {
-            name: newName,
-        }
-        
-        topicService.createOne(newTopic)
-        .then(() => {
-            setNewName('')
-            topicService.getAll()
-            .then((data) => {
-                setTopics(data)})
-        })
-    }
-
-    const filterByTopicId = (topicId) => {
-        articleService.getAllByTopicId(topicId)
-        .then((data) => {
-            setArticles(data)
-        })
-    }
 
     return (
         <div className="topics-section">
@@ -50,12 +30,18 @@ function Topics({topics, setTopics, setArticles}) {
                         value={newName}
                         onChange={(e) => {setNewName(e.target.value)}} 
                     />
-                    <Button content="Create" type="create" onClick={createOne} /> 
+                    <Button 
+                        content="Create" type="create" 
+                        onClick={createTopic} 
+                    /> 
                 </p>
             </div>
             <div className="filter-with-topics">
                 <h4>Filter with Topic</h4>
-                <Button content="All" type="topic-filter" onClick={getAllArticles} /> 
+                <Button 
+                    content="All" type="topic-filter" 
+                    onClick={() => articleController.getAllArticles(setArticles)} 
+                /> 
 
                 { topics.length === 0 ? "No Topics yet" :
                     topics.map((top) =>
@@ -63,7 +49,7 @@ function Topics({topics, setTopics, setArticles}) {
                             key={top.id} 
                             content={top.name} 
                             type="topic-filter" 
-                            onClick={() => filterByTopicId(top.id)}
+                            onClick={() => articleController.getAllArticlesByTopicId(top.id, setArticles)}
                         /> 
                     )
                 }

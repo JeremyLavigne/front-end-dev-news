@@ -10,3 +10,12 @@ See more details here : https://git.2020.school/jeremy_lavigne/dev-news
 ### What is in this Repository ?
 
 The front-end part of this project.
+
+### Installation
+
+```
+git clone https://github.com/JeremyLavigne/front-end-dev-news.git
+cd front-end-dev-news
+npm install
+npm start
+```
